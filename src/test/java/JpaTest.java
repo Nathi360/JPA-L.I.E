@@ -40,10 +40,7 @@ public class JpaTest {
         entityManager.getTransaction().commit();
         entityManager.close();
 
-        System.out.println("Accounts: " + customer.getAccounts().getClass().getName());
-        String a = "abc";
-        String b = a.concat("");
-        System.out.println(a == b);
+        System.out.println("Accounts: " + customer.getAccounts().size());
     }
 
     @Test
@@ -55,13 +52,7 @@ public class JpaTest {
         entityManager.getTransaction().commit();
         entityManager.close();
 
-        // Reopen
-        entityManager = factory.createEntityManager(); //new instance returned
-        Boolean status = entityManager.isOpen();
-        entityManager.getTransaction().begin();
-        Customer customer2 = entityManager.find(Customer.class, 1);
-        entityManager.getTransaction().commit();
-        System.out.println("Accounts: " + customer2.getAccounts());
+        System.out.println("Accounts: " + customer.getAccounts());
     }
 
     @Test(expected = NullPointerException.class)
